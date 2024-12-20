@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>አማርኛ ቃላት ምስሻ</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title-container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Andemta Logo" class="logo">
+            <h1>አማርኛ ቃላት ምስሻ</h1>
+        </div>
+        <form id="form" action="/process" method="post">
+            <label for="aya">Enter Text File Name:</label>
+            <input type="text" id="aya" name="aya" required>
+
+            <label for="QrtsBett">How do you like your text to be searched?</label>
+            <select id="QrtsBett" name="QrtsBett" required>
+                <option value="" disabled selected>Select an Option</option>
+                <option value="1">የቤት ማሰሻ</option>
+                <option value="2">የቅርጽ ማሰሻ</option>
+                <option value="3">የቁጥር ማሰሻ</option>
+            </select>            
+
+            <div id="option1-fields" style="display: none;">
+                <label for="qrts">Enter sequence of alphabets (e.g. መለሰ, ጀመረ, etc):</label>
+                <input type="text" id="qrts" name="qrts">
+
+                <label for="godolo">Enter an alphabet you don't mind missing from the sequence:</label>
+                <input type="text" id="godolo" name="godolo">
+
+                <label for="bzat">Enter an alphabet you would like to repeat:</label>
+                <input type="text" id="bzat" name="bzat">
+
+                <label for="ayneke">Enter an alphabet you would want as is (no vowel change):</label>
+                <input type="text" id="ayneke" name="ayneke">
+
+                <label>How do you want the search of the sequence to be carried out?</label>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="prefix-only" name="mircha-options">
+                        Prefix Only
+                    </label>
+                    <label>
+                        <input type="checkbox" id="suffix-only" name="mircha-options">
+                        Suffix Only
+                    </label>
+                </div>
+                <input type="hidden" id="mircha-value" name="Mircha" value="1">
+            </div>
+
+            <div id="option2-fields" style="display: none;">
+                <label for="qrts2">Enter QRTS (e.g. 143, 626, etc):</label>
+                <input type="text" id="qrts2" name="qrts2">
+
+                <label for="mircha2-options">How do you want the search of the sequence to be carried out?</label>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="prefix-only-2" name="mircha2-options">
+                        Prefix Only
+                    </label>
+                    <label>
+                        <input type="checkbox" id="suffix-only-2" name="mircha2-options">
+                        Suffix Only
+                    </label>
+                </div>
+                <input type="hidden" id="mircha2-value" name="Mircha2" value="1">
+            </div>
+
+            <div id="option3-fields" style="display: none;">
+                <label for="Mircha3">How do you want numbers searched? (1 is in digits, 2 is in words)</label>
+                <input type="text" id="Mircha3" name="Mircha3">
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="results">
+            <!-- Results will be displayed here -->
+        </div>
+    </div>
+
+    <script src="/static/js/scripts.js"></script>
+</body>
+</html>
